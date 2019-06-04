@@ -1,7 +1,7 @@
 const initState = {
     families: [
-        {lastName: "Loudermilk", numOfMem: "4", isMem: true},
-        {lastName: "Dodd", numOfMem: "3", isMem: false}
+        {pin: "0001", lastName: "Loudermilk", numOfMem: "4", guests: "1"},
+        {pin: "0002", lastName: "Dodd", numOfMem: "3", guests: "4"}
     ]
 }
 

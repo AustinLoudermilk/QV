@@ -15,7 +15,7 @@ const Navbar = () => {
                     alt = "QV"
                     />
                 </Link>
-                <MemSignedInLinks/>
+                <AdminSignedInLinks/>
             </div>
         </nav>
     )

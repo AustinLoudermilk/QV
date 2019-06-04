@@ -4,7 +4,7 @@ import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
     auth : authReducer,
-    project : familyReducer
+    family : familyReducer
 });
 
-export default rootReducer
+export default rootReducer 

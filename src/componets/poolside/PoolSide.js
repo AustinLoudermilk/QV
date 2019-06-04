@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import SignIn from './SignIn'
 import SignedIn from './SignedIn'
+import { connect } from 'react-redux'
 
 class PoolSide extends Component {
   render () {
+    const { families } = this.props;
     return (
       <div className="dashboard container">
           <div className="row">
@@ -11,7 +13,7 @@ class PoolSide extends Component {
                 <SignIn/>
               </div>
               <div className="col s12 m6">
-                <SignedIn/>
+                <SignedIn families={ families } />
               </div>
           </div>
       </div>
@@ -19,4 +21,10 @@ class PoolSide extends Component {
   }
 }
 
-export default PoolSide;
+const mapState = (state) => {
+  return {
+    families: state.family.families
+  };
+}
+
+export default connect(mapState)(PoolSide);
