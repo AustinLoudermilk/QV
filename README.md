@@ -2,6 +2,6 @@
 ## Written by Austin Loudermilk
 
 #### Dashboard
-	- Admin
-		- Event Manager
-		- Pool Log
+- Admin
+    - Event Manager
+    - Pool Log
