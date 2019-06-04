@@ -6,6 +6,10 @@ const initState = {
 }
 
 const familyReducer = (state = initState, action) => {
+    switch (action.type) {
+        case 'CREATE_FAMILY':
+            console.log('created family: ', action.family);
+    }
     return state;
 }
 
