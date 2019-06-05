@@ -9,8 +9,13 @@ const familyReducer = (state = initState, action) => {
     switch (action.type) {
         case 'CREATE_FAMILY':
             console.log('created family: ', action.family);
+            return state;
+        case 'CREATE_FAMILY_ERR':
+            console.log('created family error: ', action.err);
+            return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default familyReducer
