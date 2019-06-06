@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import Notifactions from './widgets/Notifactions'
 import FamilyMemebers from './widgets/FamilyMembers'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class AdminDashboard extends Component {
   render () {
+    const { auth } = this.props;
+    if(!auth.uid) return <Redirect to='/signin' />
+
     return (
       <div className="dashboard container">
           <div className="row">
@@ -19,4 +24,10 @@ class AdminDashboard extends Component {
   }
 }
 
-export default AdminDashboard;
+const mapState = (state) => {
+  return {
+      auth: state.firebase.auth
+  }
+}
+
+export default connect(mapState)(AdminDashboard);

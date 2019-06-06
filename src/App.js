@@ -7,6 +7,7 @@ import PoolSide from './componets/poolside/PoolSide'
 import CreateFamily from './componets/poolside/newFamily/CreateFamily'
 import Events from './componets/poolside/Events'
 import SignIn from './componets/dashboard/auth/SignIn'
+import SignUp from './componets/dashboard/auth/SignUp'
 
 class App extends Component {
   render () {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/" component={ SignIn }/>
             <Route path="/poolside" component={ PoolSide }/>
             <Route path="/signin" component={ SignIn }/>
+            <Route path="/signup" component={ SignUp }/>
             <Route path="/createfamily" component={ CreateFamily }/>
             <Route path="/memberdb" component={ MemDashboard }/>
             <Route path="/admindb" component={ AdminDashboard }/>

@@ -8,8 +8,10 @@ const SignedIn = ( { families } ) => {
             <h5 className="grey-text text-darken-3">Signed In</h5>
             
             { families && families.map(family => {
+                let pin = -1;
+                if(family.pin) pin = family.pin;
                 return (
-                    <Family family={ family } key={ family.pin }/>
+                    <Family family={ family } key={ pin }/>
                 )
             })}
 

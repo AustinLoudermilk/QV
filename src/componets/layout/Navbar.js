@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 import AdminSignedInLinks from './AdminSignedInLinks'
 import MemSignedInLinks from './MemSignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
+import { connect } from 'react-redux'
 
-const Navbar = () => {
+const Navbar = (props) => {
+    const { auth, profile } = props;
+    const links = auth.uid ? <AdminSignedInLinks profile={ profile } /> : <SignedOutLinks/>;
     return (
         <nav className="nav-wrapper">
             <div className="container">
@@ -15,10 +18,18 @@ const Navbar = () => {
                     alt = "QV"
                     />
                 </Link>
-                <AdminSignedInLinks/>
+                { links }
             </div>
         </nav>
     )
 }
 
-export default Navbar
+const maptState = (state) => {
+    console.log(state);
+    return {
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
+    }
+}
+
+export default connect(maptState)(Navbar);

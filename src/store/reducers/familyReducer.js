@@ -15,7 +15,7 @@ const familyReducer = (state = initState, action) => {
             return state;
         default:
             return state;
-    }
+    } 
 }
 
 export default familyReducer

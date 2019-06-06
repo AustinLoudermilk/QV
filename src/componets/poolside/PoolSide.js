@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import SignIn from './SignIn'
 import SignedIn from './SignedIn'
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 class PoolSide extends Component {
   render () {
-    const { families } = this.props;
+    const { families, auth } = this.props;
+    if(!auth.uid) return <Redirect to='/signin' />
+
     return (
       <div className="dashboard container">
           <div className="row">
@@ -23,8 +28,12 @@ class PoolSide extends Component {
 
 const mapState = (state) => {
   return {
-    families: state.family.families
+    families: state.firestore.ordered.families,
+    auth: state.firebase.auth
   };
 }
 
-export default connect(mapState)(PoolSide);
+export default compose(
+  connect(mapState),
+  firestoreConnect([{ collection: 'families' }])
+)(PoolSide); 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createFamily } from '../../../store/actions/familyActions'
+import { Redirect } from 'react-router-dom'
 
 class CreateFamily extends Component {
     state = {
@@ -18,9 +19,13 @@ class CreateFamily extends Component {
         e.preventDefault();
         //console.log(this.state);
         this.props.createFamily(this.state);
+        this.props.history.push('/');
     }
 
     render() {
+        const { auth } = this.props;
+        if(!auth.uid) return <Redirect to='/signin' />
+
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
@@ -43,13 +48,19 @@ class CreateFamily extends Component {
     }
 }
 
+const mapState = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatch = (dispatch) => {
     return {
         createFamily: (family) => dispatch(createFamily(family))
     }
 }
 
-export default connect(null, mapDispatch)(CreateFamily)
+export default connect(mapState, mapDispatch)(CreateFamily)
 
 /* 
 
