@@ -5,8 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 class CreateFamily extends Component {
     state = {
-        firstName: '',
-        lastName: ''
+        members: []
     };
 
     handleChange = (e) => {
@@ -23,21 +22,22 @@ class CreateFamily extends Component {
     }
 
     render() {
-        const { auth } = this.props;
+        const { auth, profile } = this.props;
         if(!auth.uid) return <Redirect to='/signin' />
+
+        console.log(profile);
+
+        console.log(auth);
 
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">New Family</h5>
+                    <h5 className="grey-text text-darken-3">The { profile.lastName } Family</h5>
+
                     <div className="input-field">
                         <label htmlFor="firstName">First Name</label>
                         <input type="text" id="firstName" onChange={this.handleChange} />
                     </div>
-                    <div className="input-field">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" onChange={this.handleChange} />
-                    </div> 
 
                     <div className="input-field">
                         <button className="btn pink lighten-1 z-depth-0">Create</button>
@@ -50,7 +50,8 @@ class CreateFamily extends Component {
 
 const mapState = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 

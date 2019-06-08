@@ -20,7 +20,7 @@ class SignUp extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.state.isMember = document.getElementById("isMember").checked;
+        this.getState({ isMember : document.getElementById("isMember").checked });
         this.props.signUp(this.state);
     }
 
