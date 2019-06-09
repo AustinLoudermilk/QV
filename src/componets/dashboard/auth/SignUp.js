@@ -20,13 +20,14 @@ class SignUp extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.getState({ isMember : document.getElementById("isMember").checked });
+        this.setState({ isMember : document.getElementById("isMember").checked });
         this.props.signUp(this.state);
+        this.props.history.push('/managefamily');
     }
 
     render() {
         const { auth, authError } = this.props;
-        if(!auth.uid) return <Redirect to='/signin' />
+        //if(!auth.uid) return <Redirect to='/signin' />
 
         return (
             <div className="container">

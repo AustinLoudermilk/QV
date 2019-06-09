@@ -8,9 +8,8 @@ const AdminSignedInLinks = (props) => {
         <ul className="right">
             <li><NavLink to='/admindb'>Dashboard</NavLink></li>
             <li><NavLink to='/poolside'>Pool Side</NavLink></li>
-            <li><NavLink to='/'>Events</NavLink></li>
             <li><a onClick={ props.signOut }>Sign Out</a></li>
-            <li><NavLink to='/' className="btn btn-floating pink lighten-1">{ props.profile.intitals }</NavLink></li>
+            <li><NavLink to='/' className="btn btn-floating light-blue darken-4">{ props.profile.intitals }</NavLink></li>
         </ul>
     )
 }

@@ -7,7 +7,14 @@ import { connect } from 'react-redux'
 
 const Navbar = (props) => {
     const { auth, profile } = props;
-    const links = auth.uid ? <AdminSignedInLinks profile={ profile } /> : <SignedOutLinks/>;
+
+    let links = null;
+
+    if(auth.uid) {
+        if(profile.isAdmin) links = <AdminSignedInLinks profile={ profile } />
+        else links = <MemSignedInLinks profile={ profile } />
+    } else links = <SignedOutLinks/>;
+
     return (
         <nav className="nav-wrapper">
             <div className="container">
@@ -25,7 +32,6 @@ const Navbar = (props) => {
 }
 
 const maptState = (state) => {
-    console.log(state);
     return {
         auth: state.firebase.auth,
         profile: state.firebase.profile

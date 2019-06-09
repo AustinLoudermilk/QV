@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 class MemDashboard extends Component {
   render () {
-    const { auth } = this.props;
+    const { auth, memArray, firebase } = this.props;
     if(!auth.uid) return <Redirect to='/signin' />
 
     return (
@@ -26,8 +26,10 @@ class MemDashboard extends Component {
 
 const mapState = (state) => {
   return {
-      auth: state.firebase.auth
+      firebase: state.firebase,
+      auth: state.firebase.auth,
+      memArray: state.firebase.profile.members
   }
 }
 
-export default connect(mapState )(MemDashboard);
+export default connect(mapState)(MemDashboard);

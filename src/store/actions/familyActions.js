@@ -1,17 +1,16 @@
-export const createFamily = (family) => {
+export const manageFamily = (family) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         //make async call to database
         const firestore = getFirestore();
         const profile = getState().firebase.profile;
         const uid = getState().firebase.auth.uid;
-        firestore.collection('families').add({
-            ...family,
-            owner: profile.firstName + " (" + uid + ")",
-            dateCreated: new Date()
+        firestore.collection('users').doc(uid).set({
+            ...profile,
+            members: family.members
         }).then(() => {
-            dispatch({ type: 'CREATE_FAMILY', family });
+            dispatch({ type: 'FAMILY_UPDATE', family });
         }).catch((err) => {
-            dispatch({ type: 'CREATE_FAMILY_ERR', err });
+            dispatch({ type: 'FAMILY_UPDATE_ERR', err });
         });
     }
 }
