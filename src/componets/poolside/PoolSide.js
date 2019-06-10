@@ -10,8 +10,6 @@ class PoolSide extends Component {
   render () {
     const { families, auth, profile } = this.props;
 
-    console.log(profile);
-
     if(!auth.uid) return <Redirect to='/signin' />
     else if(profile !== undefined && profile.isEmpty == false) {
       if(profile.isAdmin) {
