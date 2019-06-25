@@ -20,7 +20,7 @@ class PoolSide extends Component {
                     <SignIn/>
                   </div>
                   <div className="col s12 m6">
-                    <SignedIn families={ families } />
+                    <SignedIn/>
                   </div>
               </div>
           </div>
